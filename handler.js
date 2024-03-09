@@ -4,10 +4,7 @@ import { fileURLToPath } from 'url'
 import path, { join } from 'path'
 import { unwatchFile, watchFile } from 'fs'
 import chalk from 'chalk'
-import fs from 'fs'
-import knights from 'knights-canvas'
-import fetch from 'node-fetch'
-
+import fetch from "node-fetch"
 /**
  * @type {import('@adiwajshing/baileys')}
  */
@@ -22,7 +19,6 @@ const delay = ms => isNumber(ms) && new Promise(resolve => setTimeout(function (
  * Handle messages upsert
  * @param {import('@adiwajshing/baileys').BaileysEventMap<unknown>['messages.upsert']} groupsUpdate 
  */
-
 export async function handler(chatUpdate) {
     this.msgqueque = this.msgqueque || []
     if (!chatUpdate)
@@ -38,316 +34,317 @@ export async function handler(chatUpdate) {
         if (!m)
             return
         m.exp = 0
+        m.credit = false
+        m.bank = false
+        m.chicken = false
         m.limit = false
-        try {
-            // TODO: use loop to insert data instead of this
-            let user = global.db.data.users[m.sender]
-            if (typeof user !== 'object')
-                global.db.data.users[m.sender] = {}
-            if (user) {
-                if (!isNumber(user.exp))
-                    user.exp = 0
-                if (!isNumber(user.limit))
-                    user.limit = 25
-                if (!isNumber(user.lastclaim))
-                    user.lastclaim = 0
-                if (!isNumber(user.pasangan))
-                    user.pasangan = ''
-                if (!('registered' in user))
-                    user.registered = false
-                if (!user.registered) {
-                    if (!('name' in user))
-                        user.name = m.name
-                    if (!isNumber(user.age))
-                        user.age = -1
-                    if (!isNumber(user.regTime))
-                        user.regTime = -1
-                }
-                if (!isNumber(user.afk))
-                    user.afk = -1
-                if (!('afkReason' in user))
-                    user.afkReason = ''
-                if (!('banned' in user))
-                    user.banned = false
-                if (!isNumber(user.warn))
-                    user.warn = 0
-                if (!isNumber(user.level))
-                    user.level = 0
-                if (!('role' in user))
-                    user.role = 'Beginner'
-                if (!('autolevelup' in user))
-                    user.autolevelup = false
-                if (!isNumber(user.money))
-                    user.money = 0
-                if (!isNumber(user.atm))
-                    user.atm = 0
-                if (!isNumber(user.fullatm))
-                    user.fullatm = 0
-                if (!isNumber(user.bank))
-                    user.bank = 0
-                if (!isNumber(user.health))
-                    user.health = 100
-                if (!isNumber(user.potion))
-                    user.potion = 0
-                if (!isNumber(user.trash))
-                    user.trash = 0
-                if (!isNumber(user.wood))
-                    user.wood = 0
-                if (!isNumber(user.rock))
-                    user.rock = 0
-                if (!isNumber(user.string))
-                    user.string = 0
-                if (!isNumber(user.petFood))
-                    user.petFood = 0
-                if (!isNumber(user.emerald))
-                    user.emerald = 1
-                if (!isNumber(user.diamond))
-                    user.diamond = 0
-                if (!isNumber(user.gold))
-                    user.gold = 0
-                if (!isNumber(user.iron))
-                    user.iron = 0
-                if (!isNumber(user.upgrader))
-                    user.upgrader = 0
-                if (!isNumber(user.common))
-                    user.common = 0
-                if (!isNumber(user.uncommon))
-                    user.uncommon = 0
-                if (!isNumber(user.mythic))
-                    user.mythic = 0
-                if (!isNumber(user.legendary))
-                    user.legendary = 0
-                if (!isNumber(user.superior))
-                    user.superior = 0
-                if (!isNumber(user.pet))
-                    user.pet = 0
-                if (!isNumber(user.horse))
-                    user.horse = 0
-                if (!isNumber(user.horseexp))
-                    user.horseexp = 0
-                if (!isNumber(user.cat))
-                    user.cat = 0
-                if (!isNumber(user.catexp))
-                    user.catexp = 0
-                if (!isNumber(user.fox))
-                    user.fox = 0
-                if (!isNumber(user.foxhexp))
-                    user.foxexp = 0
-                if (!isNumber(user.dog))
-                    user.dog = 0
-                if (!isNumber(user.dogexp))
-                    user.dogexp = 0
-                if (!isNumber(user.robo))
-                    user.robo = 0
-                if (!isNumber(user.roboxp))
-                    user.roboxp = 0
+      try {
+        // TODO: use loop to insert data instead of this
+        let user = global.db.data.users[m.sender]
+        if (typeof user !== "object")
+            global.db.data.users[m.sender] = {}
+        if (user) {
+            if (!isNumber(user.exp))
+                user.exp = 0
+            if (!isNumber(user.credit))
+                user.credit = 10
+            if (!isNumber(user.bank))
+                user.bank = 0
+            if (!isNumber(user.chicken))
+                user.chicken = 0  
+            if (!isNumber(user.lastclaim))
+                user.lastclaim = 0
+            if (!('registered' in user))
+                user.registered = false
+                //-- user registered 
+            if (!user.registered) {
+                if (!('name' in user))
+                    user.name = m.name
+                if (!isNumber(user.age))
+                    user.age = -1
+                if (!isNumber(user.regTime))
+                    user.regTime = -1
+            }
+                if (!isNumber(user.afk)) user.afk = -1
+            if (!('autolevelup' in user))  user.autolevelup = true
+            if (!('role' in user)) user.role = 'يجب عليك التفعيل'
+                if (user.lastsalary === undefined || user.lastsalary === null) {
+                    user.lastsalary = null;
+          }
+          if (!isNumber(user.afk))
+              user.afk = -1
+          if (!('afkReason' in user))
+              user.afkReason = ''
+          if (!('banned' in user))
+              user.banned = false
+          if (!isNumber(user.warn))
+              user.warn = 0
+          if (!isNumber(user.level))
+              user.level = 0
+          if (!('role' in user))
+              user.role = 'يجب عليك التفعيل'
+          if (!('autolevelup' in user))
+              user.autolevelup = true
+          if (!isNumber(user.money))
+              user.money = 0
+          if (!isNumber(user.atm))
+              user.atm = 0
+          if (!isNumber(user.fullatm))
+              user.fullatm = 0
+          if (!isNumber(user.bank))
+              user.bank = 0
+          if (!isNumber(user.health))
+              user.health = 100
+          if (!isNumber(user.potion))
+              user.potion = 0
+          if (!isNumber(user.trash))
+              user.trash = 0
+          if (!isNumber(user.wood))
+              user.wood = 0
+          if (!isNumber(user.rock))
+              user.rock = 0
+          if (!isNumber(user.string))
+              user.string = 0
+          if (!isNumber(user.petFood))
+              user.petFood = 0
+          if (!isNumber(user.emerald))
+              user.emerald = 1
+          if (!isNumber(user.diamond))
+              user.diamond = 0
+          if (!isNumber(user.gold))
+              user.gold = 0
+          if (!isNumber(user.iron))
+              user.iron = 0
+          if (!isNumber(user.upgrader))
+              user.upgrader = 0
+          if (!isNumber(user.common))
+              user.common = 0
+          if (!isNumber(user.uncommon))
+              user.uncommon = 0
+          if (!isNumber(user.mythic))
+              user.mythic = 0
+          if (!isNumber(user.legendary))
+              user.legendary = 0
+          if (!isNumber(user.superior))
+              user.superior = 0
+          if (!isNumber(user.pet))
+              user.pet = 0
+          if (!isNumber(user.horse))
+              user.horse = 0
+          if (!isNumber(user.horseexp))
+              user.horseexp = 0
+          if (!isNumber(user.cat))
+              user.cat = 0
+          if (!isNumber(user.catexp))
+              user.catexp = 0
+          if (!isNumber(user.fox))
+              user.fox = 0
+          if (!isNumber(user.foxhexp))
+              user.foxexp = 0
+          if (!isNumber(user.dog))
+              user.dog = 0
+          if (!isNumber(user.dogexp))
+              user.dogexp = 0
+          if (!isNumber(user.robo))
+              user.robo = 0
+          if (!isNumber(user.roboxp))
+              user.roboxp = 0
 
 
-                if (!isNumber(user.horselastfeed))
-                    user.horselastfeed = 0
-                if (!isNumber(user.catlastfeed))
-                    user.catlastfeed = 0
-                if (!isNumber(user.foxlastfeed))
-                    user.foxlastfeed = 0
-                if (!isNumber(user.doglastfeed))
-                    user.doglastfeed = 0
+          if (!isNumber(user.horselastfeed))
+              user.horselastfeed = 0
+          if (!isNumber(user.catlastfeed))
+              user.catlastfeed = 0
+          if (!isNumber(user.foxlastfeed))
+              user.foxlastfeed = 0
+          if (!isNumber(user.doglastfeed))
+              user.doglastfeed = 0
 
 
-                if (!isNumber(user.armor))
-                    user.armor = 0
-                if (!isNumber(user.armordurability))
-                    user.armordurability = 0
-                if (!isNumber(user.sword))              
-                    user.sword = 0
-                if (!isNumber(user.sworddurability))
-                    user.sworddurability = 0
-                if (!isNumber(user.pickaxe))
-                    user.pickaxe = 0
-                if (!isNumber(user.pickaxedurability))
-                    user.pickaxedurability = 0
-                if (!isNumber(user.fishingrod))
-                    user.fishingrod = 0
-                if (!isNumber(user.fishingroddurability))
-                    user.fishingroddurability = 0
+          if (!isNumber(user.armor))
+              user.armor = 0
+          if (!isNumber(user.armordurability))
+              user.armordurability = 0
+          if (!isNumber(user.sword))              
+              user.sword = 0
+          if (!isNumber(user.sworddurability))
+              user.sworddurability = 0
+          if (!isNumber(user.pickaxe))
+              user.pickaxe = 0
+          if (!isNumber(user.pickaxedurability))
+              user.pickaxedurability = 0
+          if (!isNumber(user.fishingrod))
+              user.fishingrod = 0
+          if (!isNumber(user.fishingroddurability))
+              user.fishingroddurability = 0
 
 
-                if (!isNumber(user.lastclaim))
-                    user.lastclaim = 0
-                if (!isNumber(user.lastadventure))
-                    user.lastadventure = 0
-                if (!isNumber(user.lastfishing))
-                    user.lastfishing = 0
-                if (!isNumber(user.lastdungeon))
-                    user.lastdungeon = 0
-                if (!isNumber(user.lastduel))
-                    user.lastduel = 0
-                if (!isNumber(user.lastmining))
-                    user.lastmining = 0
-                if (!isNumber(user.lasthunt))
-                    user.lasthunt = 0
-                if (!isNumber(user.lastweekly))
-                    user.lastweekly = 0
-                if (!isNumber(user.lastmonthly))
-                    user.lastmonthly = 0
-                if (!isNumber(user.lastbunga))
-                    user.lastbunga = 0
-                    
+          if (!isNumber(user.lastclaim))
+              user.lastclaim = 0
+          if (!isNumber(user.lastadventure))
+              user.lastadventure = 0
+          if (!isNumber(user.lastfishing))
+              user.lastfishing = 0
+          if (!isNumber(user.lastdungeon))
+              user.lastdungeon = 0
+          if (!isNumber(user.lastduel))
+              user.lastduel = 0
+          if (!isNumber(user.lastmining))
+              user.lastmining = 0
+          if (!isNumber(user.lasthunt))
+              user.lasthunt = 0
+          if (!isNumber(user.lastweekly))
+              user.lastweekly = 0
+          if (!isNumber(user.lastmonthly))
+              user.lastmonthly = 0
+          if (!isNumber(user.lastbunga))
+              user.lastbunga = 0
 
-                if (!isNumber(user.premium))
-                    user.premium = false
-                if (!isNumber(user.premiumTime))
-                    user.premiumTime = 0
-                if (!isNumber(user.limitjoin))
-                    user.limitjoin = 0
-            } else
-                global.db.data.users[m.sender] = {
-                    exp: 0,
-                    limit: 25,
-                    lastclaim: 0,
-                    registered: false,
-                    name: m.name,
-                    pasangan: '',
-                    age: -1,
-                    regTime: -1,
-                    afk: -1,
-                    afkReason: '',
-                    banned: false,
-                    warn: 0,
-                    level: 0,                    
-                    role: 'Beginner',
-                    autolevelup: false,
-                    money: 0,
-                    bank: 0,
-                    atm: 0,
-                    fullatm: 0,
-                    health: 100,
-                    potion: 10,
-                    trash: 0,
-                    wood: 0,
-                    rock: 0,
-                    string: 0,
-                    emerald: 1,
-                    diamond: 0,
-                    gold: 0,
-                    iron: 0,
-                    upgrader: 0,
-                    common: 0,
-                    uncommon: 0,
-                    mythic: 0,
-                    legendary: 0,
-                    superior: 0,
-                    pet: 0,
-                    horse: 0,
-                    horseexp: 0,
-                    cat: 0,
-                    catngexp: 0,
-                    fox: 0,
-                    foxexp: 0,
-                    dog: 0,
-                    dogexp: 0,
-                    horselastfeed: 0,
-                    catlastfeed: 0,
-                    foxlastfeed: 0,
-                    doglastfeed: 0,
-                    armor: 0,
-                    armordurability: 0,
-                    sword: 0,
-                    sworddurability: 0,
-                    pickaxe: 0,
-                    pickaxedurability: 0,
-                    fishingrod: 0,
-                    fishingroddurability: 0,
-                    lastclaim: 0,
-                    lastadventure: 0,
-                    lastfishing: 0,
-                    lastdungeon: 0,
-                    lastduel: 0,
-                    lastmining: 0,
-                    lasthunt: 0,
-                    lastweekly: 0,
-                    lastmonthly: 0,
-                    lastbunga: 0,
-                    premium: false,
-                    premiumTime: 0,
-                    limitjoin: 0,
-                }
+
+          if (!isNumber(user.premium))
+              user.premium = false
+          if (!isNumber(user.premiumTime))
+              user.premiumTime = 0
+          if (!isNumber(user.limitjoin))
+              user.limitjoin = 0
+          } else
+        global.db.data.users[m.sender] = {
+            exp: 0,
+            limit: 25,
+            lastclaim: 0,
+            registered: false,
+            name: m.name,
+            pasangan: '',
+            age: -1,
+            regTime: -1,
+            afk: -1,
+            afkReason: '',
+            banned: false,
+            warn: 0,
+            level: 0,                    
+            role: 'يجب عليك التفعيل',
+            autolevelup: true,
+            money: 0,
+            bank: 0,
+            atm: 0,
+            fullatm: 0,
+            health: 100,
+            potion: 10,
+            trash: 0,
+            wood: 0,
+            rock: 0,
+            string: 0,
+            emerald: 1,
+            diamond: 0,
+            gold: 0,
+            iron: 0,
+            upgrader: 0,
+            common: 0,
+            uncommon: 0,
+            mythic: 0,
+            legendary: 0,
+            superior: 0,
+            pet: 0,
+            horse: 0,
+            horseexp: 0,
+            cat: 0,
+            catngexp: 0,
+            fox: 0,
+            foxexp: 0,
+            dog: 0,
+            dogexp: 0,
+            horselastfeed: 0,
+            catlastfeed: 0,
+            foxlastfeed: 0,
+            doglastfeed: 0,
+            armor: 0,
+            armordurability: 0,
+            sword: 0,
+            sworddurability: 0,
+            pickaxe: 0,
+            pickaxedurability: 0,
+            fishingrod: 0,
+            fishingroddurability: 0,
+            lastclaim: 0,
+            lastadventure: 0,
+            lastfishing: 0,
+            lastdungeon: 0,
+            lastduel: 0,
+            lastmining: 0,
+            lasthunt: 0,
+            lastweekly: 0,
+            lastmonthly: 0,
+            lastbunga: 0,
+            premium: false,
+            premiumTime: 0,
+            limitjoin: 0,
+        }
             let chat = global.db.data.chats[m.chat]
             if (typeof chat !== 'object')
                 global.db.data.chats[m.chat] = {}
             if (chat) {
-                if (!('isBanned' in chat))
-                    chat.isBanned = false
-                if (!('welcome' in chat))
-                    chat.welcome = true
-                if (!('detect' in chat))
-                    chat.detect = false
-                if (!('sWelcome' in chat))
-                    chat.sWelcome = ''
-                if (!('sBye' in chat))
-                    chat.sBye = ''
-                if (!('sPromote' in chat))
-                    chat.sPromote = ''
-                if (!('sDemote' in chat))
-                    chat.sDemote = ''
-                if (!('delete' in chat))
-                    chat.delete = false
-                if (!('antiLink' in chat))
-                    chat.antiLink = false
-                if (!('viewonce' in chat))
-                    chat.viewonce = true
-                if (!('antiToxic' in chat))
-                    chat.antiToxic = false
-                if (!('simi' in chat))
-                    chat.simi = false
-                if (!('autosticker' in chat))
-                    chat.autosticker = false
-                if (!('premium' in chat))
-                    chat.premium = false
-                 if (!('onlyenglish' in chat))
-                    chat.onlyLatinos = false
-                if (!('premiumTime' in chat)) 
-                    chat.premiumTime = false
-                if (!('premnsfw' in chat))
-                    chat.premnsfw = false
-                if (!isNumber(chat.expired))
-                    chat.expired = 0
+                if (!('isBanned' in chat)) chat.isBanned = false
+                if (!('welcome' in chat)) chat.welcome = true
+                if (!('detect' in chat)) chat.detect = true
+                if (!('sWelcome' in chat)) chat.sWelcome = ''
+                if (!('sBye' in chat)) chat.sBye = ''
+                if (!('sPromote' in chat)) chat.sPromote = ''
+                if (!('sDemote' in chat)) chat.sDemote = ''
+                if (!('delete' in chat)) chat.delete = true
+                if (!('modohorny' in chat)) chat.modohorny = false    
+                if (!('modoadmin' in chat)) chat.modoadmin = false
+                if (!('antibadword' in chat)) chat.antibadword = true
+                if (!('antiprivado' in chat)) chat.antiprivado = true
+                if (!('autosticker' in chat)) chat.autosticker = false                    
+                if (!('audios' in chat)) chat.audios = false                            
+                if (!('antiLink' in chat)) chat.antiLink = true
+                if (!('antiLink2' in chat)) chat.antiLink2 = false
+                if (!('antiviewonce' in chat)) chat.antiviewonce = false
+                if (!('antiToxic' in chat)) chat.antiToxic = true
+                if (!('antibadword' in chat)) chat.antibadword = true
+                if (!('antiTraba' in chat)) chat.antiTraba = false
+                if (!('antiArab' in chat)) chat.antiArab = false
+                if (!isNumber(chat.expired)) chat.expired = 0
             } else
                 global.db.data.chats[m.chat] = {
                     isBanned: false,
                     welcome: true,
-                    detect: false,
+                    detect: true,
                     sWelcome: '',
                     sBye: '',
                     sPromote: '',
                     sDemote: '',
                     delete: true,
-                    antiLink: false,
-                    viewonce: true,
-                    antiToxic: true,
-                    simi: false,
-                    expired: 0,
-                    onlyenglish: false,
+                    modohorny: true,
+                    modoadmin: false,
+                    antiprivado: true,
+                    antibadword: true,
                     autosticker: false,
-                    premium: false,
-	            premiumTime: false,
-                    premnsfw: false, 
+                    audios: true,
+                    antiLink: true,
+                    antiLink2: false,
+                    antiviewonce: false,
+                    antiToxic: true,
+                    antiTraba: false,
+                    antiArab: false,
+                    expired: 0,
                 }
             let settings = global.db.data.settings[this.user.jid]
             if (typeof settings !== 'object') global.db.data.settings[this.user.jid] = {}
             if (settings) {
-                if (!('self' in settings)) settings.self = false
+                if (!('self' in settings)) settings.self = true
                 if (!('autoread' in settings)) settings.autoread = false
-                if (!('restrict' in settings)) settings.restrict = false
-                if (!('anticall' in settings)) settings.anticall = true
-                if (!('autorestart' in settings)) settings.autorestart = false
+                if (!('restrict' in settings)) settings.restrict = true
+                if (!('antiCall' in settings)) settings.antiCall = false
+                if (!('antiPrivate' in settings)) settings.antiPrivate = true
                 if (!('restartDB' in settings)) settings.restartDB = 0
             } else global.db.data.settings[this.user.jid] = {
                 self: false,
                 autoread: false,
-                autorestart: false,
-                anticall: true,
+                restrict: false,
+                antiCall: true,
                 restartDB: 0,
-                restrict: false
+                antiPrivate: false
             }
         } catch (e) {
             console.error(e)
@@ -365,14 +362,10 @@ export async function handler(chatUpdate) {
         if (typeof m.text !== 'string')
             m.text = ''
 
-
-
         const isROwner = [conn.decodeJid(global.conn.user.id), ...global.owner.map(([number]) => number)].map(v => v.replace(/[^0-9]/g, '') + '@s.whatsapp.net').includes(m.sender)
         const isOwner = isROwner || m.fromMe
         const isMods = isOwner || global.mods.map(v => v.replace(/[^0-9]/g, '') + '@s.whatsapp.net').includes(m.sender)
-        const isPrems = isROwner || db.data.users[m.sender].premiumTime > 0
-
-
+        const isPrems = isROwner || global.prems.map(v => v.replace(/[^0-9]/g, '') + '@s.whatsapp.net').includes(m.sender)
 
         if (opts['queque'] && m.text && !(isMods || isPrems)) {
             let queque = this.msgqueque, time = 1000 * 5
@@ -390,6 +383,7 @@ export async function handler(chatUpdate) {
 
         let usedPrefix
         let _user = global.db.data && global.db.data.users && global.db.data.users[m.sender]
+
         const groupMetadata = (m.isGroup ? ((conn.chats[m.chat] || {}).metadata || await this.groupMetadata(m.chat).catch(_ => null)) : {}) || {}
         const participants = (m.isGroup ? groupMetadata.participants : []) || []
         const user = (m.isGroup ? participants.find(u => conn.decodeJid(u.id) === m.sender) : {}) || {} // User Data
@@ -419,11 +413,10 @@ export async function handler(chatUpdate) {
                     for (let [jid] of global.owner.filter(([number, _, isDeveloper]) => isDeveloper && number)) {
                         let data = (await conn.onWhatsApp(jid))[0] || {}
                         if (data.exists)
-                            m.reply(`*Plugin:* ${name}\n*Sender:* ${m.sender}\n*Chat:* ${m.chat}\n*Command:* ${m.text}\n\n\`\`\`${format(e)}\`\`\``.trim(), data.jid)
+                                    m.reply(`*[ ⚠️ االامر ده غلط يحب كلم المطور ⚠️ ]*\n\n*—◉ الخطأ:* ${m.plugin}\n*—◉ المستخدم:* ${m.sender}\n*—◉ الامر:* ${usedPrefix}${command} ${args.join(' ')}\n\n\`\`\`${text}\`\`\`\n\n*[❗] قم بابلاغ المطور ليعطيك حلا لاستخدام الامر #reporte*`.trim(), data.jid)
                     }
                 }
             }
-
             if (!opts['restrict'])
                 if (plugin.tags && plugin.tags.includes('admin')) {
                     // global.dfail('restrict', m, this)
@@ -436,7 +429,7 @@ export async function handler(chatUpdate) {
                 Array.isArray(_prefix) ? // Array?
                     _prefix.map(p => {
                         let re = p instanceof RegExp ? // RegExp in Array?
-                           p :
+                            p :
                             new RegExp(str2Regex(p))
                         return [re.exec(m.text), re]
                     }) :
@@ -478,7 +471,7 @@ export async function handler(chatUpdate) {
                     plugin.command.test(command) :
                     Array.isArray(plugin.command) ? // Array?
                         plugin.command.some(cmd => cmd instanceof RegExp ? // RegExp in Array?
-                            cmd.test(command) :       
+                            cmd.test(command) :
                             cmd === command
                         ) :
                         typeof plugin.command === 'string' ? // String?
@@ -491,7 +484,7 @@ export async function handler(chatUpdate) {
                 if (m.chat in global.db.data.chats || m.sender in global.db.data.users) {
                     let chat = global.db.data.chats[m.chat]
                     let user = global.db.data.users[m.sender]
-                    if (name != 'owner-unbanchat.js' && name != 'owner-exec.js' && name != 'owner-exec2.js' && name != 'tool-delete.js' && chat?.isBanned)
+                    if (name != 'owner-unbanchat.js' && chat?.isBanned)
                         return // Except this
                     if (name != 'owner-unbanuser.js' && user?.banned)
                         return
@@ -537,15 +530,15 @@ export async function handler(chatUpdate) {
                 m.isCommand = true
                 let xp = 'exp' in plugin ? parseInt(plugin.exp) : 17 // XP Earning per command
                 if (xp > 200)
-                    m.reply('chirrido -_-') // Hehehe
+                    m.reply('Ngecit -_-') // Hehehe
                 else
                     m.exp += xp
-                if (!isPrems && plugin.diamond && global.db.data.users[m.sender].diamond < plugin.diamond * 1) {
-                    this.sendButton(m.chat, `✳️ your diamonds ran out \n use the following command to buy more diamonds \n*${usedPrefix}todiamond* <amount> \n*${usedPrefix}todiamondall*`, igfg, null, [['Buy', `${usedPrefix}todiamond`], ['Buy All', `${usedPrefix}todiamondall`]], m)
+                if (!isPrems && plugin.limit && global.db.data.users[m.sender].limit < plugin.limit * 1) {
+                    this.reply(m.chat, `*[❗] لا تملك الماس كافي استخدم الامر ${usedPrefix}شراء <كمية>*`, m)
                     continue // Limit habis
                 }
                 if (plugin.level > _user.level) {
-                    this.reply(m.chat, `✳️ required level ${plugin.level} to use this command. \nyour level ${_user.level}`, m)
+                    this.reply(m.chat, `*[❗] المستوى المطلوب ${plugin.level} لاستخدام هذا الأمر هو مستواك ${_user.level}*`, m)
                     continue // If the level has not been reached
                 }
                 let extra = {
@@ -574,7 +567,7 @@ export async function handler(chatUpdate) {
                 try {
                     await plugin.call(this, m, extra)
                     if (!isPrems)
-                        m.diamond = m.diamond || plugin.diamond || false
+                        m.limit = m.limit || plugin.limit || false
                 } catch (e) {
                     // Error occured
                     m.error = e
@@ -587,7 +580,7 @@ export async function handler(chatUpdate) {
                             for (let [jid] of global.owner.filter(([number, _, isDeveloper]) => isDeveloper && number)) {
                                 let data = (await conn.onWhatsApp(jid))[0] || {}
                                 if (data.exists)
-                                m.reply(`*🗂️ الملحق:* ${m.plugin}\n*👤 المرسل:* ${m.sender}\n*💬 الدردشة:* ${m.chat}\n*💻 الأمر:* ${usedPrefix}${command} ${args.join(' ')}\n📄 *سجل الأخطاء:*\n\n\`\`\`${text}\`\`\``.trim(), data.jid)
+                                    m.reply(`*[ ⚠️ مرحبا سيدي شاركي - ريمورو ساما هذا الامر خربان⚠️ ]*\n\n*—◉ الخطاء:* ${m.plugin}\n*—◉ المستخدم:* ${m.sender}\n*—◉ الامر:* ${usedPrefix}${command} ${args.join(' ')}\n\n\`\`\`${text}\`\`\`\n\n*❗ ارجو منك اصلاحه في اسرع وقت ممكن#reporte*`.trim(), data.jid)
                             }
                         m.reply(text)
                     }
@@ -600,8 +593,8 @@ export async function handler(chatUpdate) {
                             console.error(e)
                         }
                     }
-                    if (m.diamond)
-                        m.reply(`consumed *${+m.diamond}* 💎`)
+                    if (m.limit)
+                        m.reply(+m.limit + ' الماس 💎 مستخدم')
                 }
                 break
             }
@@ -621,6 +614,7 @@ export async function handler(chatUpdate) {
                 user.exp += m.exp
                 user.limit -= m.limit * 1
             }
+
             let stat
             if (m.plugin) {
                 let now = +new Date
@@ -641,28 +635,35 @@ export async function handler(chatUpdate) {
                         last: now,
                         lastSuccess: m.error != null ? 0 : now
                     }
-                stat.total += 1
-                stat.last = now                
+             stat.total += 1
+                stat.last = now
                 if (m.error == null) {
                     stat.success += 1
                     stat.lastSuccess = now
                 }
             }
         }
+
         try {
             if (!opts['noprint']) await (await import(`./lib/print.js`)).default(m, this)
         } catch (e) {
             console.log(m, m.quoted, e)
         }
         if (opts['autoread'])
-            await this.chatRead(m.chat, m.isGroup ? m.sender : undefined, m.id || m.key.id).catch(() => { })
+            await this.readMessages([m.key])
+
+        if (!m.fromMem && m.text.match(/(ديابلو|لولي|شارك|كيلوا|شاركي|@966536307053|@966569044652)/gi)) {
+        let emot = pickRandom(["🎃", "❤", "😘", "😍", "💕", "😎", "🙌", "⭐", "👻", "🔥"])
+        this.sendMessage(m.chat, { react: { text: emot, key: m.key }})}
+        function pickRandom(list) { return list[Math.floor(Math.random() * list.length)]}
     }
 }
+
 /**
  * Handle groups participants update
  * @param {import('@adiwajshing/baileys').BaileysEventMap<unknown>['group-participants.update']} groupsUpdate 
  */
-export async function participantsUpdate({ id, participants, action }) {
+ export async function participantsUpdate({ id, participants, action }) {
     if (opts['self'])
         return
     // if (id in conn.chats) return // First login will spam
@@ -678,15 +679,15 @@ export async function participantsUpdate({ id, participants, action }) {
             if (chat.welcome) {
                 let groupMetadata = await this.groupMetadata(id) || (conn.chats[id] || {}).metadata
                 for (let user of participants) {
-                    let pp = 'https://telegra.ph/file/3694d5edde3846459647b.jpg'
-                    let ppgp = 'https://telegra.ph/file/3694d5edde3846459647b.jpg'
+                    let pp = 'https://telegra.ph/file/986b843307bb1f4e2f26e.jpg'
+                    let ppgp = 'https://telegra.ph/file/986b843307bb1f4e2f26e.jpg'
                     try {
                         pp = await this.profilePictureUrl(user, 'image')
                         ppgp = await this.profilePictureUrl(id, 'image')
                         } finally {
                         text = (action === 'add' ? (chat.sWelcome || this.welcome || conn.welcome || 'Welcome, @user').replace('@group', await this.getName(id)).replace('@desc', groupMetadata.desc?.toString() || 'Desconocido') :
                             (chat.sBye || this.bye || conn.bye || 'HELLO, @user')).replace('@user', '@' + user.split('@')[0])
-                         
+
                             let wel = API('fgmods', '/api/welcome', {
                                 username: await this.getName(user),
                                 groupname: await this.getName(id),
@@ -711,20 +712,23 @@ export async function participantsUpdate({ id, participants, action }) {
             }
             break
         case 'promote':
-        case 'promover':
-            text = (chat.sPromote || this.spromote || conn.spromote || '@user is now administrador')
+        case 'daradmin':
+        case 'darpoder':
+            text = (chat.sPromote || this.spromote || conn.spromote || '@user ```هو الآن مشرف```')
         case 'demote':
-        case 'degradar':
+        case 'quitarpoder':
+        case 'quitaradmin':
             if (!text)
-                text = (chat.sDemote || this.sdemote || conn.sdemote || '@user not now an administrador')
+                text = (chat.sDemote || this.sdemote || conn.sdemote || '@user ```لم يعد مشرفًا```')
             text = text.replace('@user', '@' + participants[0].split('@')[0])
             if (chat.detect)
                 this.sendMessage(id, { text, mentions: this.parseMention(text) })
             break
     }
 }
+
 /**
- * Handler groups update
+ * Handle groups update
  * @param {import('@adiwajshing/baileys').BaileysEventMap<unknown>['groups.update']} groupsUpdate 
  */
 export async function groupsUpdate(groupsUpdate) {
@@ -735,16 +739,29 @@ export async function groupsUpdate(groupsUpdate) {
         if (!id) continue
         let chats = global.db.data.chats[id], text = ''
         if (!chats?.detect) continue
-        if (groupUpdate.desc)text = (chats.sDesc || this.sDesc || conn.sDesc || '```تم تغيير الوصف إلى```\n@desc').replace('@desc', groupUpdate.desc)
-        if (groupUpdate.subject)text = (chats.sSubject || this.sSubject || conn.sSubject || '```تم تغيير الموضوع إلى```\n@subject').replace('@subject', groupUpdate.subject)
-        if (groupUpdate.icon)text = (chats.sIcon || this.sIcon || conn.sIcon || '```تم تغيير الصورة الرمزية إلى```').replace('@icon', groupUpdate.icon)
-        if (groupUpdate.revoke)text = (chats.sRevoke || this.sRevoke || conn.sRevoke || '```تم تغيير رابط المجموعة إلى```\n@revoke').replace('@revoke', groupUpdate.revoke)
-        if (groupUpdate.announce == true)text = (chats.sAnnounceOn || this.sAnnounceOn || conn.sAnnounceOn || '*تم إغلاق المجموعة!*')
-        if (groupUpdate.announce == false)text = (chats.sAnnounceOff || this.sAnnounceOff || conn.sAnnounceOff || '*تم فتح المجموعة!*')
-        if (groupUpdate.restrict == true)text = (chats.sRestrictOn || this.sRestrictOn || conn.sRestrictOn || '*المشاركون في المجموعة الآن محدودون!*')
-        if (groupUpdate.restrict == false)text = (chats.sRestrictOff || this.sRestrictOff || conn.sRestrictOff || '*المشاركون في المجموعة الآن فقط الإدارة!*')
+        if (groupUpdate.desc) text = (chats.sDesc || this.sDesc || conn.sDesc || '```تم تغيير الوصف إلى```\n@desc').replace('@desc', groupUpdate.desc)
+        if (groupUpdate.subject) text = (chats.sSubject || this.sSubject || conn.sSubject || '```تم تغيير الموضوع إلى```\n@subject').replace('@subject', groupUpdate.subject)
+        if (groupUpdate.icon) text = (chats.sIcon || this.sIcon || conn.sIcon || '```تم تغير الصورة ```').replace('@icon', groupUpdate.icon)
+        if (groupUpdate.revoke) text = (chats.sRevoke || this.sRevoke || conn.sRevoke || '```تم تغير لينك الجروب الي```\n@revoke').replace('@revoke', groupUpdate.revoke)
         if (!text) continue
         await this.sendMessage(id, { text, mentions: this.parseMention(text) })
+    }
+}
+
+export async function callUpdate(callUpdate) {
+    let isAnticall = global.db.data.settings[this.user.jid].antiCall
+    if (!isAnticall) return
+    for (let nk of callUpdate) {
+    if (nk.isGroup == false) {
+    if (nk.status == "offer") {
+    let callmsg = await this.reply(nk.from, `مرحبا *@${nk.from.split('@')[0]}*, ال ${nk.isVideo ? 'مكالمات فيديو' : 'المكالمات'} غير مسموح به ، سيتم حظرك.\n-\nإذا اتصلت بالخطأ ، فاتصل بمنشئ المحتوى الخاص بي لإلغاء حظرك!`, false, { mentions: [nk.from] })
+    //let data = global.owner.filter(([id, isCreator]) => id && isCreator)
+    //await this.sendContact(nk.from, data.map(([id, name]) => [id, name]), false, { quoted: callmsg })
+     let vcard = `◤𝑺𝒉𝒂𝒓𝒌𝒚あ𝐒𝐚𝐦𝐚◢:[❗]كلم الرقم ده - المطور.\nName:𝑺𝒉𝒂𝒓𝒌𝒚あ𝐒𝐚𝐦𝐚\n`
+    await this.sendMessage(nk.from, { contacts: { displayName: '𝐵𝑌:𝑺𝒉𝒂𝒓𝒌𝒚あ𝐒𝐚𝐦𝐚', contacts: [{ vcard }] }}, {quoted: callmsg})
+    await this.updateBlockStatus(nk.from, 'block')
+    }
+    }
     }
 }
 
@@ -758,41 +775,41 @@ export async function deleteUpdate(message) {
             return
         let chat = global.db.data.chats[msg.chat] || {}
         if (chat.delete)
-            return 
-            await this.reply(msg.chat, `
-≡ تم حذف رسالة
-┌─⊷  المحذوفة من قبل
-▢ *الرقم:* @${participant.split`@`[0]}
-└─────────────
-لإلغاء التفعيل، اضغط على
-*/off antidelete*
-*.enable delete*
+            return
+        await this.reply(msg.chat, `
+━━━━⬣  *الحذف التلقائي*  ⬣━━━━
+*❈↲ الرقم:* @${participant.split`@`[0]}
+*❈↲ جاري إرسال الرسالة ...*
+*❈↲ لتعطيل هذه الميزة اكتب الأمر:*
+*—◉ #الغاء مضاد الحذف *
+*—◉ #تفعيل الحذف*
+*❈↲ متساش تكلم المطور يحب
+━━━━⬣  *الحذف التلقائي*  ⬣━━━━
 `.trim(), msg, {
-        mentions: [participant]
-            });
+            mentions: [participant]
+        })
         this.copyNForward(msg.chat, msg).catch(e => console.log(e, msg))
     } catch (e) {
         console.error(e)
     }
 }
 
-global.dfail = (type, m, conn) => {
 
+
+global.dfail = (type, m, conn) => {
     let msg = {
-        rowner: '*فقط المالك* • يمكن استخدام هذا الأمر فقط من قبل *مالك البوت*',
-        owner: '*فقط المالك* • يمكن استخدام هذا الأمر فقط من قبل *مالك البوت*',
-        mods: '*فقط المشرفين* • هذه الوظيفة مخصصة فقط لـ *مشرفي البوت*',
-        premium: '*فقط للمشتركين المميزين* • يمكن استخدام هذا الأمر فقط من قبل *أعضاء مميزين*',
-        group: '*دردشة جماعية* • يمكن استخدام هذا الأمر فقط في المجموعات',
-        private: '*دردشة خاصة* • يمكن استخدام هذا الأمر فقط في *الدردشة الخاصة للبوت*',
-        admin: '*فقط المشرفين* • هذا الأمر مخصص فقط لـ *مشرفي المجموعة*',
-        botAdmin: '*فقط مشرف البوت* • يجب أن أكون *مشرفًا* لاستخدام هذا الأمر',
-        unreg: '*أنت غير مسجل بعد* • سجّل الدخول لاستخدام هذه الميزة عبر كتابة:\n\n*/reg الاسم.العمر*\n\n📌مثال: */reg جورو.20*',
-        restrict: '*القيود معطلة* • هذه الميزة *معطلة*',
-    }
-    [type]
-    let imgerror = 'https://telegra.ph/file/56280c4e7e245b6ccb2db.jpg'
-    if (msg) return conn.sendFile(m.chat, imgerror, 'imgerror.mp4', msg, m)//conn.sendButton(m.chat, msg, igfg, null, [['🔖 OK', 'huh'], ['⦙☰ Menu', '/menu'] ], m)
+        rowner: '*『 الميزه ذي للمطور بس لاتسوي خوي! 』*',
+        owner: '*『 الميزه ذي للمطور بس يحب ! 』*',
+        mods: '*『 الميزه ذي لمالك البوت بس ! 』*',
+        premium: '*『 الميزه ذي للاعضاء المميزين بس ! 』*',
+        group: '*『 الميزه ذي في القروبات بس ! 』*',
+        private: '*『 الميزه ذي للبرايفت - الخاص بس ! 』*',
+        admin: '*『 الميزه ذي للادمنز بس! 』*',
+        botAdmin: '*『 لازم ترفع البوت ادمن اول ! 』*',
+        unreg: '*[ لحظة !! انت مو مسجل ليش؟ ]*\n\n*『 سجل الامر عشان تفعله 』*\n*➣ .تسجيل*',
+        restrict: '*『 الميزه ذي المالك لغيها ! 』*'
+    }[type]
+    if (msg) return m.reply(msg)
 }
 
 let file = global.__filename(import.meta.url, true)
