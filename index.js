@@ -1,31 +1,26 @@
-console.log('✅ STARTING...')
-
+console.log('✅ ㅤstarting...')
 import { join, dirname } from 'path'
-import { createRequire } from 'module';
+import { createRequire } from "module";
 import { fileURLToPath } from 'url'
 import { setupMaster, fork } from 'cluster'
 import { watchFile, unwatchFile } from 'fs'
 import cfonts from 'cfonts';
 import { createInterface } from 'readline'
 import yargs from 'yargs'
-
-// https://stackoverflow.com/a/50052194
 const __dirname = dirname(fileURLToPath(import.meta.url))
-const require = createRequire(__dirname) // Bring in the ability to create the 'require' method
-const { name, author } = require(join(__dirname, './package.json')) // https://www.stefanjudis.com/snippets/how-to-import-json-files-in-es-modules-node-js/
+const require = createRequire(__dirname) 
+const { name, author } = require(join(__dirname, './package.json')) 
 const { say } = cfonts
 const rl = createInterface(process.stdin, process.stdout)
 
-say('RAPHAEL -  BOT', {
+say('DIABLO - Bot', {
   font: 'chrome',
   align: 'center',
-  gradient: ['red', 'magenta']
-})
-say(`'${name}' By @Dark-Man747`, {
+  gradient: ['red', 'magenta']})
+say(`By @SharkYTB`, {
   font: 'console',
   align: 'center',
-  gradient: ['red', 'magenta']
-})
+  gradient: ['red', 'magenta']})
 
 var isRunning = false
 /**
@@ -71,9 +66,5 @@ function start(file) {
   let opts = new Object(yargs(process.argv.slice(2)).exitProcess(false).parse())
   if (!opts['test'])
     if (!rl.listenerCount()) rl.on('line', line => {
-      p.emit('message', line.trim())
-    })
-  // console.log(p)
-}
-
+      p.emit('message', line.trim())})}
 start('main.js')
