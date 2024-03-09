@@ -1,9 +1,8 @@
-<p align="center"> 
-<u>Ⓒ sharky sama Inchttps://telegra.ph/file/c5aee23bb237b912ca6bf.jpg.</u>
-</p>
-<p align="center">
-<img src="" width="300" height="300"/>
-</p>
-<p align="center">
-  <a href="#"><img src="http://readme-typing-svg.herokuapp.com?color=d1fa02&center=true&vCenter=true&multiline=false&lines=Ⓒ+DIABLO+-+BOT" alt="">
-</p>
+# DIABLO-BOT
+
+
+#### DEPLOY TO Heroku 
+...
+1. Now Deploy
+<p align="center"><a href="https://dashboard.heroku.com/new?template=https://github.com/DarkMan747/HATSUNE-MIKU-BOT"> <img src="https://img.shields.io/badge/Heroku%20Deploy-blue?style=for-the-badge&logo=heroku" width="220" height="38.45"/></a></p>
+
