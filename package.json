@@ -1,6 +1,6 @@
-{ 
-    "name": "raphael",
-    "version": "1.6.15",
+{
+    "name": "diablo",
+    "version": "3.0.0",
     "description": "Customizable WhatsApp Bot",
     "main": "index.js",
     "type": "module",
@@ -20,30 +20,31 @@
         "whatsapp",
         "js-whatsapp",
         "whatsapp",
-        "raphael-bot",
-        "raphael-bot-md",
+        "diablo-bot",
+        "diablo-bot-md",
         "multi-device",
         "MD",
         "baileys-md"
     ],
-    "homepage": "https://github.com/DK3MK/RAPHAEL2-BOT",
+    "homepage": "https://github.com/SharkYTB/DIABLO-BOT",
     "author": {
-        "name": "raphael"
+        "name": "diablo"
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/DK3MK/RAPHAEL2-BOT.git"
+        "url": "git+https://github.com/SharkYTB/DIABLO-BOT.git"
     },
     "bugs": {
-        "url": "https://github.com/DK3MK/RAPHAEL2-BOT/issues"
+        "url": "https://github.com/SharkYTB/DIABLO-BOT/issues"
     },
     "license": "GPL-3.0-or-later",
     "dependencies": {
+        "@sasmeee/igdl":"^1.0.0",
+        "@xct007/frieren-scraper":"github:xct007/frieren-scraper",
         "google-it": "^1.6.4",
         "@adiwajshing/baileys": "npm:@whiskeysockets/baileys",
         "@adiwajshing/keyed-db": "^0.2.4",
         "@bochilteam/scraper": "github:DK3MK/scraper",
-        "@vitalets/google-translate-api": "^8.0.0",
         "awesome-phonenumber": "^3.4.0",
         "acrcloud": "^1.4.0",
         "@shineiichijo/marika": "^2.0.6",
@@ -101,11 +102,11 @@
         "didyoumean": "^1.2.2",
         "fg-ig": "^0.0.2",
         "api-dylux": "^1.6.9",
+        "@vitalets/google-translate-api": "^9.2.0",
         "yargs": "^17.6.0",
         "ytdl-core": "npm:@distube/ytdl-core",
         "wa-sticker-formatter": "^4.3.2",
-        "@xct007/frieren-scraper": "*",
         "@xct007/tiktok-scraper": "*"
-       
+
     }
 }
