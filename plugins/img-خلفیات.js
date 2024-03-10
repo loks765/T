@@ -134,7 +134,6 @@ const dir = [
 'https://telegra.ph/file/b2abfd00f1dcff9f75728.jpg',
 'https://telegra.ph/file/b8d4e156f9463a43a8639.jpg',
 'https://telegra.ph/file/094b62f0b13dee50c673a.jpg',
-'',
 
 ];
 let handler = async (m, { conn }) => {
