@@ -751,15 +751,15 @@ global.dfail = (type, m, conn) => {
         restrict: '*『 الــمــيــزه هــاذي الــمــطــور لــغــاهــا ⭐! 』*'
     }[type];
 
-    let imgurl = 'https://telegra.ph/file/311cb0b0ac4693bfbec62.jpg'; // رابط الصورة
-    let filename = 'imgerror.jpg'; // اسم الملف
+        let imgurl = 'https://telegra.ph/file/311cb0b0ac4693bfbec62.jpg'; // رابط الصورة
+        let filename = 'imgerror.jpg'; // اسم الملف
 
-    if (msg) return conn.sendFile(m.chat, imgurl, filename, msg, m);
-};
+        if (msg) return conn.sendFile(m.chat, imgurl, filename, msg, m);
+    };
 
-let file = global.__filename(import.meta.url, true);
-watchFile(file, async () => {
-    unwatchFile(file);
-    console.log(chalk.redBright("Update 'handler.js'"));
-    if (global.reloadHandler) console.log(await global.reloadHandler());
-});
+    let file = global.__filename(import.meta.url, true);
+    watchFile(file, async () => {
+        unwatchFile(file);
+        console.log(chalk.redBright("Update 'handler.js'"));
+        if (global.reloadHandler) console.log(await global.reloadHandler());
+    });
