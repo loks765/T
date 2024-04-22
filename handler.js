@@ -749,13 +749,17 @@ global.dfail = (type, m, conn) => {
         botAdmin: '*『 لازم ترفع البوت ادمن اول ⭐! 』*',
         unreg: '*[ لــحــظــة !! انــت مــو مــســجــل لــيــش؟ ]*\n\n*『 سجل الامر عشان تفعله 』*\n*➣ .تسجيل*',
         restrict: '*『 الــمــيــزه هــاذي الــمــطــور لــغــاهــا ⭐! 』*'
-    }[type]
-    if (msg) return m.reply(msg)
-}
+    }[type];
 
-let file = global.__filename(import.meta.url, true)
+    let imgurl = 'https://telegra.ph/file/311cb0b0ac4693bfbec62.jpg'; // رابط الصورة
+    let filename = 'imgerror.jpg'; // اسم الملف
+
+    if (msg) return conn.sendFile(m.chat, imgurl, filename, msg, m);
+};
+
+let file = global.__filename(import.meta.url, true);
 watchFile(file, async () => {
-    unwatchFile(file)
-    console.log(chalk.redBright("Update 'handler.js'"))
-    if (global.reloadHandler) console.log(await global.reloadHandler())
-})
+    unwatchFile(file);
+    console.log(chalk.redBright("Update 'handler.js'"));
+    if (global.reloadHandler) console.log(await global.reloadHandler());
+});
