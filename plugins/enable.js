@@ -215,7 +215,7 @@ case 'autobio':
       }
       bot.antiPrivate = isEnable
       break
-      
+
     default:
      if (!/[01]/.test(command)) return m.reply(`
 ≡ List of options
