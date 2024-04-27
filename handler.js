@@ -166,7 +166,7 @@ export async function handler(chatUpdate) {
             banned: false,
             warn: 0,
             level: 0,                    
-            role: 'يجب عليك التفعيل',
+            role: '~‼️ لـــتـــتـــرقـــى لـــمـــســـتـــوى أعـــلـــى أكـــتـــب ‼️~*\n *" .on autolevelup " <=',
             autolevelup: false,
             money: 0,
             bank: 0,
@@ -483,7 +483,7 @@ export async function handler(chatUpdate) {
                     continue // Limit habis
                 }
                 if (plugin.level > _user.level) {
-                    this.reply(m.chat, `*[❗] الــمــســتــوى الــمــطــلــوب ${plugin.level} لاســتــخــدام هــذا الأمــر, مــســتــواك هــو ${_user.level}*`, m)
+                    this.reply(m.chat, `*[❗] الــمــســتــوى الـمـطـلـوب ${plugin.level} لاسـتـخـدام هـذا الأمـر مـســتـواك هــو ${_user.level}*\n> *إستخدم امر [ .لفل ] للإستطلاع على مستواك الحالي او الجديد!.*`, m)
                     continue // If the level has not been reached
                 }
                 let extra = {
@@ -597,8 +597,8 @@ export async function handler(chatUpdate) {
           if (opts['autoread'])
               await this.readMessages([m.key])
       
-        if (!m.fromMem && m.text.match(/(ديابلو|كاريل|روبين|جاين|جنى|ربيع|شاركي|لولي|شارك|كيلوا|شاركي|@966536307053|@966569044652)/gi)) {
-        let emot = pickRandom(["🎃", "❤", "😘", "😍", "💕", "😎", "🙌", "⭐", "👻", "🔥"])
+        if (!m.fromMem && m.text.match(/(ديابلو|ربيع|شاركي|شارك|شاركي|ريمورو|@966561841257|@966569044652)/gi)) {
+        let emot = pickRandom(["✨", "❤", "😘", "♥️", "😍", "💕", "😎", "🌸", "⭐", "🌺", "🔥"])
         this.sendMessage(m.chat, { react: { text: emot, key: m.key }})}
         function pickRandom(list) { return list[Math.floor(Math.random() * list.length)]}
     }
@@ -655,20 +655,6 @@ export async function handler(chatUpdate) {
                     }
                 }
             }
-            break
-        case 'promote':
-        case 'daradmin':
-        case 'darpoder':
-            text = (chat.sPromote || this.spromote || conn.spromote || '@user ```هو الآن مشرف```')
-        case 'demote':
-        case 'quitarpoder':
-        case 'quitaradmin':
-            if (!text)
-                text = (chat.sDemote || this.sdemote || conn.sdemote || '@user ```لم يعد مشرفًا```')
-            text = text.replace('@user', '@' + participants[0].split('@')[0])
-            if (chat.detect)
-                this.sendMessage(id, { text, mentions: this.parseMention(text) })
-            break
     }
 }
 
@@ -739,16 +725,16 @@ export async function deleteUpdate(message) {
 
 global.dfail = (type, m, conn) => {
     let msg = {
-        rowner: '*『 الــمــيــزه هــاذي بــس لــلــمــطــور لاتــســوي خــوي ⭐! 』*',
-        owner: '*『 الــمــيــزه هــاذي بــس لــلــمــطــور لاتــســوي خــوي ⭐! 』*',
-        mods: '*『 الــمــيــزه هــاذي بــس لــلــمــطــور لاتــســوي خــوي ⭐! 』*',
-        premium: '*『 الــمــيــزه ذي للاعــضــاء الــمــمــيــزين بــس ⭐! 』*',
-        group: '*『 الــمــيــزه ذي فــي الــقــروبــات بــس ⭐! 』*',
-        private: '*『 الــمــيــزه ذي لــلــبــرايــفــت - الــخــاص بــس ⭐! 』*',
-        admin: '*『 الــمــيــزه ذي لــلادــمــنــز بــس ⭐! 』*',
-        botAdmin: '*『 لازم ترفع البوت ادمن اول ⭐! 』*',
-        unreg: '*[ لــحــظــة !! انــت مــو مــســجــل لــيــش؟ ]*\n\n*『 سجل الامر عشان تفعله 』*\n*➣ .تسجيل*',
-        restrict: '*『 الــمــيــزه هــاذي الــمــطــور لــغــاهــا ⭐! 』*'
+        rowner: '*الــمــيــزه لــلــمــطــور لاتــســوي خــوي⭐!*',
+        owner: '*الــمــيــزه لــلــمــطــور لاتــســوي خــوي⭐!*',
+        mods: '*الـمـيـزه لــلــمــطــور لاتــســوي خــوي⭐!*',
+        premium: '*الـمـيـزه للاعــضـاء الـمـمـيـزين⭐!*',
+        group: '*الـمـيـزه فـي الـقـروبـات بـس⭐!*',
+        private: '*الـمـيـزه لـلـبـرايـفـت - الـخـاص بــس⭐!*',
+        admin: '*الـمـيــزه لــلادمــنــز بــس ⭐!*',
+        botAdmin: '*لازم ترفع البوت ادمن اول⭐!*',
+        unreg: '*[ لـحـظـة ! انـت مـو مـسـجـل لـيـش؟ ]*\n*سجل الامر عشان تفعله*\n*➣ .تسجيل*',
+        restrict: '*الــمــيــزه هــاذي الــمــطــور لــغــاهــا⭐!*'
     }[type];
 
         let imgurl = 'https://telegra.ph/file/311cb0b0ac4693bfbec62.jpg'; // رابط الصورة
