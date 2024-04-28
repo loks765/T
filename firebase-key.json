@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "sharkbot-data",
+  "private_key_id": "34a85f43dd80215ee9e62108d6268496f381f2ce",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDLO53ya3d+EA14\nspj40wTNPyB3AZqKLwHwkDv8CEqePYKGd67X6KRhklGhWBQsGgfoVVpCSBQmBiY8\ndsMN0Hv5ZGmeOhWEHjw8bGQUCxv2qLDDvb48Zeod3wU66j96OrMSaTDVcgcWO1CW\nc6fVk5bSPEdW3MeByMBjvJxj4+lVWvEUZfFjL0WEM3bmLK/wUaMToXQocqdSYfnc\n6BFOawjPlIaoSuBmbMSSruCTWtYVVNB1nPIdrhmG38qoxJQ4GzLhOXJludbe5aMi\nHOLsuSeh2RTahAfQHpzDQ6wESOsJuEp6ak4iyES8O96W2paFwHkWMujmWNrZlEy1\ncAh4loiTAgMBAAECggEAEX9kBWuoQZPLPSGPVxj/+FXfiy95qT0L2zTn3Tavifk8\nxCwIwzEV+gqZeZ02O2fQV3oFx+Ahz/ZGk30cJRPWoK27BDL3CEV8JS2l3i3ore9v\nLKMo/lU9921sq1pgtbrZERQ6bp4fKxRXR2TUxegrm5UyBTIEAVIR8mRaSKVmQQFo\nkc/k5BeGhM47MiQjhBJngpnYyFFAf12jPCe76boKzbgC8IkfNFhWbIduiS24S5Gf\nAliTmVCupW6a775pfJCi6RF647X0NFGpORj0q//s/BIilGYIfjfkTm5SFU0nekTo\nWc6yY9mE9Z7PYgZmpcevyR/aeYgmTizAHzUbZjF4WQKBgQD0lbEIGgC47/pLX7V4\nCaMqvnHtyBH11IJxRQ9BKlZXTWNjGYNM2gaf/n+0/i089Hf4PqZOuLh3IkEiqS2O\nK/Z0eNptI3sT07p2d4AH4QsXcELa1DbmmUGKd83m4qdjjcjl+f5TsoOKN29MhHAG\nNJXWCqPdy0QwIpyy2kcaSAQamQKBgQDUt9oPX+Sui8u81A5LD3M2kZosGwFm8Ymq\nlauqtmanITMJiTJAv+/28VXYXoS1rPgKU8rKat4WzqNQCGvX+awg/MIzgTnMN/pD\nhWyGQE3+OjOhgxBFVw8LnFlSi0OfmgsV43CHbHBWeL28BiF80ovoOGDC8zezKVei\nwCG2NlcECwKBgQDyFZPC5BHg+s4veozgQhG5RgT4CLYWLv/pYyRlKKWLBbMgrGj0\nUTyLcdgvagGWupZgJIpxko4qhMIZr3/Cn6rxv4jay2qPxlph1YfoxIs46MmTVMb+\nWaSwjEJFjAOIGxdE4bskVqWx0YqdHtzOl4/S6nclGYLlbezRbhFAZxWAyQKBgDuO\ngiod0hwgndlvkdToLXzQxVal9P2KkN3G6/pu+Uy/2ddIp15Dnv8H0N40kHmBRS03\nCqcjxqyiDE2DHhapG81cl07uVm1cGuC+wYTRCkUsrHoDBRI07sx0aPnYbgWIjqQB\nOudfsBA13AGBwex90pgg+M58ZFLwN04k9wtaKYDDAoGAaNRSHxUewA2ivP/K4pXg\npqvQhN58VlOLyzbEjzm737enAjfaAk7JCJRnTY6Ge/Q1XWAUxlBKHbnhal7D7igy\nGwL56b1bXTvdHoom15m8iwc1q8AX27r49rCcZeii93xWiYC7mnTF39YsQDpfPaYR\nxNOIlLKSagSjbr/zJ6bZ5zw=\n-----END PRIVATE KEY-----\n",
+  "client_email": "firebase-adminsdk-r9bd7@sharkbot-data.iam.gserviceaccount.com",
+  "client_id": "116830894999872136660",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-r9bd7%40sharkbot-data.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
