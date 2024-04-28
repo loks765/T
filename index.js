@@ -7,6 +7,8 @@ import { watchFile, unwatchFile } from 'fs'
 import cfonts from 'cfonts';
 import { createInterface } from 'readline'
 import yargs from 'yargs'
+import fs from 'fs';
+import firebaseAdmin from 'firebase-admin';
 const __dirname = dirname(fileURLToPath(import.meta.url))
 const require = createRequire(__dirname) 
 const { name, author } = require(join(__dirname, './package.json')) 
@@ -67,10 +69,7 @@ function start(file) {
   if (!opts['test'])
     if (!rl.listenerCount()) rl.on('line', line => {
       p.emit('message', line.trim())})}
-
-import fs from 'fs';
-import firebaseAdmin from 'firebase-admin';
-
+//start('main.js')
 // Get DataBase >>
 // حذف ملف database.json إذا كان موجودًا
 try {
@@ -84,7 +83,7 @@ const serviceAccount = JSON.parse(fs.readFileSync('./firebase-key.json', 'utf8')
 const id = serviceAccount.project_id
 firebaseAdmin.initializeApp({
     credential: firebaseAdmin.credential.cert(serviceAccount),
-    databaseURL: https://${id}-default-rtdb.firebaseio.com
+    databaseURL: `https://${id}-default-rtdb.firebaseio.com`
 });
 
 // قراءة البيانات من Firebase
@@ -117,3 +116,4 @@ setTimeout(() => {
     console.log('The next codes are executed after a delay of 26 seconds...');
     start('main.js')
 }, 26000);
+
