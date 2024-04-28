@@ -1,1 +1,33 @@
-function _0x1049(_0x1c35c5,_0x4499c8){const _0x46808f=_0x4680();return _0x1049=function(_0x1049e2,_0x2cafa1){_0x1049e2=_0x1049e2-0xd7;let _0x39d274=_0x46808f[_0x1049e2];return _0x39d274;},_0x1049(_0x1c35c5,_0x4499c8);}(function(_0x3b04a0,_0x2017ab){const _0x57698e=_0x1049,_0x1800b0=_0x3b04a0();while(!![]){try{const _0x5bd2f2=-parseInt(_0x57698e(0xda))/0x1*(parseInt(_0x57698e(0xe4))/0x2)+-parseInt(_0x57698e(0xea))/0x3*(parseInt(_0x57698e(0xdb))/0x4)+parseInt(_0x57698e(0xef))/0x5*(-parseInt(_0x57698e(0xed))/0x6)+parseInt(_0x57698e(0xf2))/0x7*(-parseInt(_0x57698e(0xe7))/0x8)+parseInt(_0x57698e(0xdd))/0x9+parseInt(_0x57698e(0xf1))/0xa+-parseInt(_0x57698e(0xe8))/0xb;if(_0x5bd2f2===_0x2017ab)break;else _0x1800b0['push'](_0x1800b0['shift']());}catch(_0x28c704){_0x1800b0['push'](_0x1800b0['shift']());}}}(_0x4680,0x7c351));import _0x2bb417 from'similarity';const threshold=0.72;export async function before(_0x183bd0){const _0x5f554e=_0x1049;let _0x552259=_0x183bd0[_0x5f554e(0xe2)];if(!_0x183bd0[_0x5f554e(0xd7)]||!_0x183bd0[_0x5f554e(0xd7)][_0x5f554e(0xd8)]||!_0x183bd0[_0x5f554e(0xd7)][_0x5f554e(0xe5)]||!_0x183bd0['text']||!/استخدم.استسلم/i[_0x5f554e(0xe9)](_0x183bd0['quoted'][_0x5f554e(0xe1)])||/.*hhint/i['test'](_0x183bd0[_0x5f554e(0xe1)]))return!0x0;this['tebakbendera']=this['tebakbendera']?this[_0x5f554e(0xeb)]:{};if(!(_0x552259 in this[_0x5f554e(0xeb)]))return this[_0x5f554e(0xf0)](_0x183bd0[_0x5f554e(0xe2)],_0x5f554e(0xd9),_0x183bd0);if(_0x183bd0[_0x5f554e(0xd7)]['id']==this[_0x5f554e(0xeb)][_0x552259][0x0]['id']){let _0x4f7e5a=/^(استسلم|surr?ender)$/i[_0x5f554e(0xe9)](_0x183bd0[_0x5f554e(0xe1)]);if(_0x4f7e5a)return clearTimeout(this[_0x5f554e(0xeb)][_0x552259][0x3]),delete this[_0x5f554e(0xeb)][_0x552259],this[_0x5f554e(0xf0)](_0x183bd0['chat'],'⌊\x20❁╎طلع\x20فاشل\x20و\x20استسلم╎🎭\x20⌉',_0x183bd0);let _0x1aa7b6=JSON[_0x5f554e(0xee)](JSON['stringify'](this[_0x5f554e(0xeb)][_0x552259][0x1]));if(_0x183bd0[_0x5f554e(0xe1)][_0x5f554e(0xdf)]()==_0x1aa7b6[_0x5f554e(0xec)][_0x5f554e(0xdf)]()['trim']())global['db'][_0x5f554e(0xdc)][_0x5f554e(0xe6)][_0x183bd0[_0x5f554e(0xe0)]]['exp']+=this[_0x5f554e(0xeb)][_0x552259][0x2],this[_0x5f554e(0xf0)](_0x183bd0[_0x5f554e(0xe2)],_0x5f554e(0xe3),_0x183bd0),clearTimeout(this[_0x5f554e(0xeb)][_0x552259][0x3]),delete this[_0x5f554e(0xeb)][_0x552259];else{if(_0x2bb417(_0x183bd0[_0x5f554e(0xe1)][_0x5f554e(0xdf)](),_0x1aa7b6['name'][_0x5f554e(0xdf)]()['trim']())>=threshold)_0x183bd0[_0x5f554e(0xf0)]('⌊\x20❁╎إقتربت\x20╎‼️\x20⌉');else this['reply'](_0x183bd0[_0x5f554e(0xe2)],_0x5f554e(0xde),_0x183bd0);}}return!0x0;}function _0x4680(){const _0x1ab988=['quoted','fromMe','⌊\x20❁╎انتهی\x20وقت\x20السؤال،أعد\x20المحاولة╎❌\x20⌉','233012VyggiH','148sAWGau','data','8476137xYLaVs','⌊\x20❁╎اِجابة\x20خاطئة╎❌\x20⌉','toLowerCase','sender','text','chat','⌊\x20❁╎اِجابة\x20صحیحة╎✅\x20⌉\x0a\x0a⌊\x20❁╎الجائزة💰☜⁠\x202000\x20نقطة\x20╎🎉\x20⌉*','2XkZyCz','isBaileys','users','1720QVLXUb','559328gKbXAR','test','4995RxmsRF','tebakbendera','name','4396866KYuDKf','parse','5TtUIJF','reply','6781310lukbKw','1071Ksewew'];_0x4680=function(){return _0x1ab988;};return _0x4680();}export const exp=0x0;
+import similarity from 'similarity'
+
+const threshold = 0.72
+
+export async function before(m) {
+    let id = m.chat
+    if (!m.quoted || !m.quoted.fromMe || !m.quoted.isBaileys || !m.text || !/انسحب/i.test(m.quoted.text) || /.*hhint/i.test(m.text))
+        return !0
+    this.tokitoki = this.tokitoki ? this.tokitoki : {}
+    if (!(id in this.tokitoki))
+        return this.reply(m.chat, '❖┃هــاذا الــســؤال قــد انــتـهـى┃☑️❯', m)
+    if (m.quoted.id == this.tokitoki[id][0].id) {
+        let isSurrender = /^(انسحب|surr?ender)$/i.test(m.text)
+        if (isSurrender) {
+            clearTimeout(this.tokitoki[id][3])
+            delete this.tokitoki[id]
+            return this.reply(m.chat, '❖┃طـلـع غـبـي و انســحــب┃⚠️ ❯', m)
+        }
+        let json = JSON.parse(JSON.stringify(this.tokitoki[id][1]))
+
+        if (m.text.toLowerCase() == json.name.toLowerCase().trim()) {
+            global.db.data.users[m.sender].credit += this.tokitoki[id][2]
+            this.reply(m.chat, `*❐┃اجـابـة صـحـيـحـة┃✅ ❯*\n*❐↞┇الـجـائـزة💰↞* *${this.tokitoki[id][2]}* *ذهــب┇❯*`, m)
+            clearTimeout(this.tokitoki[id][3])
+            delete this.tokitoki[id]
+        } else if (similarity(m.text.toLowerCase(), json.name.toLowerCase().trim()) >= threshold)
+            m.reply(`*❖┃اقـربـت مـن الاجـابـه┃🚸 ❯*`)
+        else
+            this.reply(m.chat, `*❐┃اجـابـة خـاطـئـة باكا┃❌ ❯*`, m)
+    }
+    return !0
+}
+export const credit = 0
