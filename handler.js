@@ -60,7 +60,7 @@ export async function handler(chatUpdate) {
             }
                 if (!isNumber(user.afk)) user.afk = -1
             if (!('autolevelup' in user))  user.autolevelup = false
-            if (!('role' in user)) user.role = '*˼‼️˹ ‣ لتترقى لمستوى أعلى أكتب╿↶*\n> *" .on autolevelup " <='
+            if (!('role' in user)) user.role = '*˼‼️˹ ‣ لتترقى لمستوى أعلى أكتب╿↶*\n> *" .on autolevelup " <=*'
                 if (user.lastsalary === undefined || user.lastsalary === null) {
                     user.lastsalary = null;
           }
@@ -166,7 +166,7 @@ export async function handler(chatUpdate) {
             banned: false,
             warn: 0,
             level: 0,                    
-            role: '*˼‼️˹ ‣ لتترقى لمستوى أعلى أكتب╿↶*\n> *" .on autolevelup " <=',
+            role: '*˼‼️˹ ‣ لتترقى لمستوى أعلى أكتب╿↶*\n> *" .on autolevelup " <=*',
             autolevelup: false,
             money: 0,
             bank: 0,
