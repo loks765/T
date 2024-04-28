@@ -4,7 +4,7 @@ const threshold = 0.72
 
 export async function before(m) {
     let id = m.chat
-    if (!m.quoted || !m.quoted.fromMe || !m.quoted.isBaileys || !m.text || !/انسحب/i.test(m.quoted.text) || /.*hhint/i.test(m.text))
+    if (!m.quoted || !m.quoted.fromMe || !m.quoted.isBaileys || !m.text || !/مـحـفـظـة/i.test(m.quoted.text) || /.*hhint/i.test(m.text))
         return !0
     this.tokitoki = this.tokitoki ? this.tokitoki : {}
     if (!(id in this.tokitoki))
