@@ -15,7 +15,6 @@ import { format } from 'util';
 import * as ws from 'ws';
 import yargs from 'yargs';
 import './config.js';
-import firebaseAdmin from 'firebase-admin';
 import { mongoDB, mongoDBV2 } from './lib/mongoDB.js';
 import { makeWASocket, protoType, serialize } from './lib/simple.js';
 global.filename = function filename(pathURL = import.meta.url, rmPrefix = platform !== 'win32') { return rmPrefix ? /file:\/\/\//.test(pathURL) ? fileURLToPath(pathURL) : pathURL : pathToFileURL(pathURL).toString() }; global.dirname = function dirname(pathURL) { return path.dirname(global.filename(pathURL, true)) }; global.require = function require(dir = import.meta.url) { return createRequire(dir) }
@@ -50,6 +49,8 @@ global.db = new Low(
             (opts['mongodbv2'] ? new mongoDBV2(opts['db']) : new mongoDB(opts['db'])) :
             new JSONFile(`${opts._[0] ? opts._[0] + '_' : ''}database.json`)
 );
+
+import firebaseAdmin from 'firebase-admin';
 
 // save database >>
 function loadDataAndReplaceInvalidKeys() {

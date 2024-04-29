@@ -60,7 +60,7 @@ export async function handler(chatUpdate) {
             }
                 if (!isNumber(user.afk)) user.afk = -1
             if (!('autolevelup' in user))  user.autolevelup = false
-            if (!('role' in user)) user.role = '*˼‼️˹ ‣ لتترقى لمستوى أعلى أكتب╿↶*\n> *" .on autolevelup " <=*'
+            if (!('role' in user)) user.role = 'لتترقى لمستوى أعلى أكتب╿↶*\n> *" .on autolevelup " <='
                 if (user.lastsalary === undefined || user.lastsalary === null) {
                     user.lastsalary = null;
           }
@@ -166,7 +166,7 @@ export async function handler(chatUpdate) {
             banned: false,
             warn: 0,
             level: 0,                    
-            role: '*˼‼️˹ ‣ لتترقى لمستوى أعلى أكتب╿↶*\n> *" .on autolevelup " <=*',
+            role: 'لتترقى لمستوى أعلى أكتب╿↶*\n> *" .on autolevelup " <=',
             autolevelup: false,
             money: 0,
             bank: 0,
@@ -596,7 +596,7 @@ export async function handler(chatUpdate) {
           }
           if (opts['autoread'])
               await this.readMessages([m.key])
-      
+
         if (!m.fromMem && m.text.match(/(ديابلو|ربيع|شاركي|شارك|شاركي|ريمورو|@966561841257|@966569044652)/gi)) {
         let emot = pickRandom(["✨", "❤", "😘", "♥️", "😍", "💕", "😎", "🌸", "⭐", "🌺", "🔥"])
         this.sendMessage(m.chat, { react: { text: emot, key: m.key }})}
@@ -670,10 +670,10 @@ export async function groupsUpdate(groupsUpdate) {
         if (!id) continue
         let chats = global.db.data.chats[id], text = ''
         if (!chats?.detect) continue
-        if (groupUpdate.desc) text = (chats.sDesc || this.sDesc || conn.sDesc || '`````\n@desc').replace('@desc', groupUpdate.desc)
-        if (groupUpdate.subject) text = (chats.sSubject || this.sSubject || conn.sSubject || '``````\n@subject').replace('@subject', groupUpdate.subject)
-        if (groupUpdate.icon) text = (chats.sIcon || this.sIcon || conn.sIcon || '``````').replace('@icon', groupUpdate.icon)
-        if (groupUpdate.revoke) text = (chats.sRevoke || this.sRevoke || conn.sRevoke || '``````\n@revoke').replace('@revoke', groupUpdate.revoke)
+        if (groupUpdate.desc) text = (chats.sDesc || this.sDesc || conn.sDesc || '```انــا عــايــش```').replace('@desc', groupUpdate.desc)
+        if (groupUpdate.subject) text = (chats.sSubject || this.sSubject || conn.sSubject || '```انــا عــايــش```').replace('@subject', groupUpdate.subject)
+        if (groupUpdate.icon) text = (chats.sIcon || this.sIcon || conn.sIcon || '```انــا عــايــش```').replace('', groupUpdate.icon)
+        if (groupUpdate.revoke) text = (chats.sRevoke || this.sRevoke || conn.sRevoke || '```انــا عــايــش```').replace('@revoke', groupUpdate.revoke)
         if (!text) continue
         await this.sendMessage(id, { text, mentions: this.parseMention(text) })
     }
